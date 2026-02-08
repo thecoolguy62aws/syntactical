@@ -4,3 +4,4 @@ build/
 dist/
 test.syn
 main.spec
+test.py
