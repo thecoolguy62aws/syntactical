@@ -5,3 +5,7 @@ dist/
 test.syn
 main.spec
 test.py
+
+
+# this is for testing the dotenv lib in syntactical
+.env
