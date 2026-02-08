@@ -1,6 +1,7 @@
 import sys
 import argparse
 from lark import Lark, Transformer, v_args
+import os
 
 # --- SYNTACTICAL GRAMMAR ---
 custom_grammar = r"""
@@ -137,12 +138,27 @@ class ToPython(Transformer):
 def main():
     arg_parser = argparse.ArgumentParser(description="Syntactical Language Runner")
     arg_parser.add_argument("filename", help="Path to your script")
+    arg_parser.add_argument("-p", "--python", action="store_true", help="Instead of running the code, save it as python in the same directory.")
     args = arg_parser.parse_args()
+
     try:
         with open(args.filename, "r") as f: source = f.read()
         l_parser = Lark(custom_grammar, parser='lalr')
         python_code = ToPython().transform(l_parser.parse(source))
-        exec(python_code, {"__name__": "__main__"})
+
+        if not args.python:
+            exec(python_code, {"__name__": "__main__"})
+        else:
+            if args.filename.endswith(".syn"):
+                python_file_name = f"{args.filename[:-4]}.py"
+            else:
+                python_file_name = f"{args.filename}.py"
+            if os.path.isfile(python_file_name):
+                print("File already exists.")
+                exit(1)
+            else:
+                with open(python_file_name, 'w') as f:
+                    f.write(python_code)
     except Exception as e:
         print(f"Syntactical Error: {e}")
 
