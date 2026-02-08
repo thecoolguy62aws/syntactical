@@ -63,7 +63,7 @@ custom_grammar = r"""
 class ToPython(Transformer):
     def start(self, *lines): 
         # Inject imports automatically
-        return "import os\nimport json\n" + "\n".join(map(str, lines))
+        return "import os\nimport json\nfrom dotenv import load_dotenv\nfrom pathlib import Path\n" + "\n".join(map(str, lines))
 
     def line_content(self, *statements):
         return "\n".join(str(s) for s in statements if str(s) != ";")
@@ -87,6 +87,14 @@ class ToPython(Transformer):
 
         if py_name == "jsonEncode": return f"json.dumps({call_args})"
         if py_name == "jsonDecode": return f"json.loads({call_args})"
+
+
+        if py_name == "path": return f"Path({call_args})"
+
+
+        if py_name == "loadEnv": return f"load_dotenv({call_args})"
+        if py_name == "env": return f"os.getenv({call_args})"
+
         
         return f"{py_name}({call_args})"
 
