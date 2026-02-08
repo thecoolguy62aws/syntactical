@@ -30,7 +30,7 @@ custom_grammar = r"""
     ?sum: product (SUM_OP product)*
     ?product: atom (MUL_OP atom)*
     ?atom: lambda_expr | primary | NUMBER | STRING | bool | list | set | dict | "(" expression ")"
-    lambda_expr: "lambda" "(" [id_list] ")" "{" expression "}"
+    lambda_expr: "lambda" [id_list] "{" expression "}"
     ?primary: dotted_name | primary "(" [arg_list] ")" -> function_call | primary "[" expression "]" -> index_access
     dotted_name: IDENTIFIER ("." IDENTIFIER)*
     arg_list: expression ("," expression)*
@@ -83,7 +83,7 @@ class ToPython(Transformer):
         if py_name == "input": return f"input({call_args})"
         if py_name == "system": return f"os.system({call_args})"
         
-        # --- JSON Support ---
+
         if py_name == "jsonEncode": return f"json.dumps({call_args})"
         if py_name == "jsonDecode": return f"json.loads({call_args})"
         
