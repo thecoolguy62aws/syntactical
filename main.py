@@ -8,9 +8,10 @@ custom_grammar = r"""
     start: line_content+
     ?line_content: statement (SEMICOLON statement)* [SEMICOLON]
     ?statement: use_stmt | with_stmt | class_def | func_def | return_stmt 
-             | assignment | if_stmt | while_stmt | for_stmt | try_stmt | expression
+             | assignment | if_stmt | while_stmt | for_stmt | try_stmt | expression | from_stmt
     block: "{" line_content+ "}"
     use_stmt: "use" IDENTIFIER ["as" IDENTIFIER]
+    from_stmt: "from" IDENTIFIER "use" IDENTIFIER
     with_stmt: "with" expression "as" IDENTIFIER block
     class_def: "class" IDENTIFIER block
     func_def: "func" IDENTIFIER "(" [id_list] ")" block
@@ -94,6 +95,7 @@ class ToPython(Transformer):
         return f"f{raw}" if "{" in raw and "}" in raw else raw
 
     def use_stmt(self, name, alias=None): return f"import {name} as {alias}" if alias else f"import {name}"
+    def from_stmt(self, name, module): return f"from {name} import {module}"
     def try_stmt(self, t_b, e_v, c_b): return f"try:\n{t_b}\nexcept Exception as {e_v}:\n{c_b}"
     def class_def(self, n, b): return f"class {n}:\n{b}"
     def func_def(self, n, a=None, b=""): return f"def {n}({a or ''}):\n{b}"
