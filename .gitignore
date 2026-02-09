@@ -3,7 +3,6 @@ __pycache__/
 build/
 dist/
 test.syn
-main.spec
 test.py
 syntactical.exe
 
