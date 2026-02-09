@@ -1,1 +1,1 @@
-pyinstaller --onefile --icon=Syn.ico --hidden-import=scrapy main.py
+pyinstaller --onefile --icon=Syn.ico main.py

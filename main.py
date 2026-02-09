@@ -15,7 +15,6 @@ import django
 import flask
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1' # pygame is a dumbo
 import pygame
-import scrapy
 import tkinter
 import time
 import keyboard
