@@ -85,8 +85,8 @@ class ToPython(Transformer):
         if py_name == "system": return f"os.system({call_args})"
         
 
-        if py_name == "jsonEncode": return f"json.dumps({call_args})"
-        if py_name == "jsonDecode": return f"json.loads({call_args})"
+        if py_name == "json_encode": return f"json.dumps({call_args})"
+        if py_name == "json_decode": return f"json.loads({call_args})"
 
 
         if py_name == "path": return f"Path({call_args})"
