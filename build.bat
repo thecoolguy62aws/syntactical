@@ -1,0 +1,1 @@
+pyinstaller --onefile --icon=Syn.ico main.py
