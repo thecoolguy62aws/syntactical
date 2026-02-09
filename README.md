@@ -4,7 +4,7 @@
 
 ### What is Syntactical?
 
-Syntactical is not *really* a programming language; it's a transpiler. It transpiles this "pretend" langauge to Python, then runs it.
+Syntactical is a programming language made with Python, that is meant to be like Python, but with better syntax.
 
 ### Documentation
 
