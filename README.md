@@ -8,5 +8,4 @@ Syntactical is not *really* a programming language; it's a transpiler. It transp
 
 ### Documentation
 
-
 Documentation coming soon!
