@@ -1,1 +1,1 @@
-pyinstaller main.spec
+pyinstaller --onefile --icon=Syn.ico --hidden-import scrapy
