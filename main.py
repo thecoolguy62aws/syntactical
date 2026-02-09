@@ -23,7 +23,6 @@ import keyboard
 import cryptography
 
 
-# --- SYNTACTICAL GRAMMAR ---
 custom_grammar = r"""
     start: line_content+
     ?line_content: statement (SEMICOLON statement)* [SEMICOLON]
