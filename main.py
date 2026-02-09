@@ -1,7 +1,27 @@
+# IMPORTS
+# some of these are here so they get packaged in the install.
 import sys
 import argparse
 from lark import Lark, Transformer, v_args
 import os
+import requests
+import pathlib
+import numpy
+import json
+import datetime
+import re
+import pandas
+import matplotlib
+import seaborn
+import django
+import flask
+import scrapy
+import pygame
+import tkinter
+import time
+import keyboard
+import cryptography
+
 
 # --- SYNTACTICAL GRAMMAR ---
 custom_grammar = r"""
