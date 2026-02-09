@@ -9,3 +9,6 @@ syntactical.exe
 
 # this is for testing the dotenv lib in syntactical
 .env
+
+# yes, i have a git repo inside a git repo
+syntactical.wiki/
