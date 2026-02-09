@@ -8,4 +8,4 @@ Syntactical is a programming language made with Python, that is meant to be like
 
 ### Documentation
 
-Documentation coming soon!
+Documentation is under construction. The current documentation can be found [here](https://github.com/thecoolguy62aws/syntactical/wiki).
