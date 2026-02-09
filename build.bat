@@ -1,1 +1,1 @@
-pyinstaller --onefile --icon=Syn.ico --hidden-import scrapy
+pyinstaller --onefile --icon=Syn.ico --hidden-import scrapy main.py
