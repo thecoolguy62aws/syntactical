@@ -10,12 +10,11 @@ import numpy
 import json
 import datetime
 import re
-import pandas
 import matplotlib
-import seaborn
 import django
 import flask
 import scrapy
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1' # pygame is a dumbo
 import pygame
 import tkinter
 import time
