@@ -21,6 +21,8 @@ import tkinter
 import time
 import keyboard
 import cryptography
+import pynput
+import pick
 
 
 custom_grammar = r"""
