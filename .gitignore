@@ -6,7 +6,6 @@ test.syn
 test.py
 syntactical.exe
 main.spec
-build.bat
 
 # this is for testing the dotenv lib in syntactical
 .env
