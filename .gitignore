@@ -14,3 +14,6 @@ build.bat
 
 # yes, i have a git repo inside a git repo
 syntactical.wiki/
+
+# i will in fact be storing tokens in this file!
+tokens.txt 
