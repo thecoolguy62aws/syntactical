@@ -1,0 +1,10 @@
+README.md
+pyproject.toml
+src/syntactical/__init__.py
+src/syntactical/syntactical.py
+src/syntactical.egg-info/PKG-INFO
+src/syntactical.egg-info/SOURCES.txt
+src/syntactical.egg-info/dependency_links.txt
+src/syntactical.egg-info/entry_points.txt
+src/syntactical.egg-info/requires.txt
+src/syntactical.egg-info/top_level.txt
