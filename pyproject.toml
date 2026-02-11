@@ -1,6 +1,6 @@
 [project]
 name = "syntactical"
-version = "1.3.1"
+version = "1.3.2"
 dependencies = [
     "blinker==1.9.0",
     "certifi==2026.1.4",
@@ -61,6 +61,7 @@ dependencies = [
 
 ]
 readme = "README.md"
+description = "The Syntactical programming language's interpreter."
 
 [project.scripts]
 syntactical = "syntactical.syntactical:main"

@@ -7,7 +7,11 @@ test.syn
 test.py
 syntactical.exe
 main.spec
+
+# scripts
 build.bat
+publish.bat
+
 
 # this is for testing the dotenv lib in syntactical
 .env
@@ -16,4 +20,4 @@ build.bat
 syntactical.wiki/
 
 # i will in fact be storing tokens in this file!
-tokens.txt 
+tokens.txt
