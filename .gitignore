@@ -8,6 +8,9 @@ test.py
 syntactical.exe
 main.spec
 
+# egg info
+src/syntactical.egg-info/
+
 # scripts
 build.bat
 publish.bat

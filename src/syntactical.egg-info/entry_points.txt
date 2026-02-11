@@ -1,3 +1,0 @@
-[console_scripts]
-syn = syntactical.syntactical:main
-syntactical = syntactical.syntactical:main

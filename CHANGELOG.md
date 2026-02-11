@@ -4,6 +4,7 @@ This changelog was started at version `1.3.1` and will have all versions after t
 
 ### 1.3.2
 
+- Add egg info to gitignore
 - Add publish script to gitignore
 - Add PyPi description
 - Add changelog
