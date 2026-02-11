@@ -6,7 +6,7 @@
 
 Syntactical is a programming language made with Python, that is meant to be like Python, but with better syntax.
 
-## Where do I get it?
+### Where do I get it?
 
 You can install Syntactical with pip via the command: `pip install syntactical`.
 
