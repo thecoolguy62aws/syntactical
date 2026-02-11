@@ -14,6 +14,7 @@ src/syntactical.egg-info/
 # scripts
 build.bat
 publish.bat
+deploy.bat
 
 
 # this is for testing the dotenv lib in syntactical
