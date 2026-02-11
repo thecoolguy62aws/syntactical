@@ -12,4 +12,4 @@ Documentation is under construction. The current documentation can be found [her
 
 ### Visual Studio Code Extension
 
-Syntactical has a VSCode extension in developement! See it's GitHub Repository [here](https://github.com/thecoolguy62aws/syntactical-vscode)
+Syntactical has a VSCode extension in developement! See it's GitHub Repository [here](https://github.com/thecoolguy62aws/syntactical-vscode). Download it for Visual Studio Code [here](https://marketplace.visualstudio.com/items?itemName=thecoolguy62aws.syntactical).
