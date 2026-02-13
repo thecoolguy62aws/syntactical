@@ -12,7 +12,7 @@ You can install Syntactical with pip via the command: `pip install syntactical`.
 
 ### Documentation
 
-Documentation is under construction. The current documentation can be found [here](https://github.com/thecoolguy62aws/syntactical/wiki).
+Documentation is under construction. The current documentation can be found [here](https://syntactical.cool62.net).
 
 ### Visual Studio Code Extension
 
