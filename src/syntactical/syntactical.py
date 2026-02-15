@@ -185,7 +185,7 @@ def main():
                 with open(python_file_name, 'w') as f:
                     f.write(python_code)
     except Exception as e:
-        print(f"Syntactical Error: {e}")
+        print(f"Syntactical (no pun intended) Error: {e}")
 
 if __name__ == "__main__":
     main()
