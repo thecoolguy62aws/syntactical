@@ -1,3 +1,7 @@
+version = "1.5.1" # version shown in --version
+
+
+
 # IMPORTS
 # some of these are here so they get packaged in the install.
 import sys
@@ -109,6 +113,9 @@ class ToPython(Transformer):
 
         if py_name == "path": return f"Path({call_args})"
 
+        
+        exits = ["exit", "stop"] # aliases for exit()
+        if py_name in exits: return f"exit({call_args})"
 
         
         return f"{py_name}({call_args})"
@@ -164,7 +171,13 @@ def main():
     arg_parser = argparse.ArgumentParser(description="Syntactical Language Runner")
     arg_parser.add_argument("filename", help="Path to your script")
     arg_parser.add_argument("-p", "--python", action="store_true", help="Instead of running the code, save it as python in the same directory.")
+    arg_parser.add_argument("-v", "--version", action="store_true", help="print current version number and exit")
     args = arg_parser.parse_args()
+
+
+    if args.version:
+        print(f"Syntactical {version}")
+        exit(0)
 
     try:
         with open(args.filename, "r") as f: source = f.read()
