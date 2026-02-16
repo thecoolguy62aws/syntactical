@@ -2,9 +2,14 @@
 
 This changelog was started at version `1.3.1` and will have all versions after that version. Some earlier versions may be included.
 
+## 1.5.1
+
+- Add `--version` option.
+- Add `exit()` and `stop()` as aliases of Python `exit()`.
+
 ## 1.5.0
 
-- Add modulo operator %. Now we can make FizzBuzz!
+- Add modulo operator `%`. Now we can make FizzBuzz!
 
 ## 1.4.1
 
