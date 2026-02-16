@@ -1,4 +1,4 @@
-version = "1.5.1" # version shown in --version
+version = "1.5.2" # version shown in --version
 
 
 
@@ -169,14 +169,17 @@ class ToPython(Transformer):
 
 def main():
     arg_parser = argparse.ArgumentParser(description="Syntactical Language Runner")
+
+    arg_parser.add_argument('--version', action='version', version=f'Syntactical {version}')
+
     arg_parser.add_argument("filename", help="Path to your script")
+
     arg_parser.add_argument("-p", "--python", action="store_true", help="Instead of running the code, save it as python in the same directory.")
-    arg_parser.add_argument("-v", "--version", action="store_true", help="print current version number and exit")
-    args = arg_parser.parse_args()
 
+    args = arg_parser.parse_known_args()
 
-    if args.version:
-        print(f"Syntactical {version}")
+    if '--version' in sys.argv:
+        # handled by argparse, just exit
         exit(0)
 
     try:

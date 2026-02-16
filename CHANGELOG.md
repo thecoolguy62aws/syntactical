@@ -2,6 +2,10 @@
 
 This changelog was started at version `1.3.1` and will have all versions after that version. Some earlier versions may be included.
 
+## 1.5.2
+
+- Fix bug where you had to enter filename argument even when --version was used.
+
 ## 1.5.1
 
 - Add `--version` option.
