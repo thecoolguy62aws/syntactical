@@ -65,7 +65,7 @@ custom_grammar = r"""
     INPLACE_OP: "+=" | "-=" | "*=" | "/="
     INC_DEC_OP: "++" | "--"
     SUM_OP: "+" | "-"
-    MUL_OP: "*" | "/"
+    MUL_OP: "*" | "/" | "%"
     COMP_OP: "==" | "!=" | "<" | ">" | "<=" | ">="
     SEMICOLON: ";"
     IDENTIFIER: /[a-zA-Z_][a-zA-Z0-9_]*/
