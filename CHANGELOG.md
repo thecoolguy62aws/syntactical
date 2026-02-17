@@ -2,6 +2,10 @@
 
 This changelog was started at version `1.3.1` and will have all versions after that version. Some earlier versions may be included.
 
+## 1.5.3
+
+- Fix bug where **literly** no code would work, regardless of the syntax.
+
 ## 1.5.2
 
 - Fix bug where you had to enter filename argument even when --version was used.
