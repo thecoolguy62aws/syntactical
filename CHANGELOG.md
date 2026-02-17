@@ -2,6 +2,10 @@
 
 This changelog was started at version `1.3.1` and will have all versions after that version. Some earlier versions may be included.
 
+## 1.6.0
+
+- Add else if statements
+
 ## 1.5.3
 
 - Fix bug where **literly** no code would work, regardless of the syntax.
