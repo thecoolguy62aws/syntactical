@@ -1,4 +1,4 @@
-version = "1.5.2" # version shown in --version
+version = "1.5.3" # version shown in --version
 
 
 
@@ -176,7 +176,7 @@ def main():
 
     arg_parser.add_argument("-p", "--python", action="store_true", help="Instead of running the code, save it as python in the same directory.")
 
-    args = arg_parser.parse_known_args()
+    args, unknown = arg_parser.parse_known_args()
 
     if '--version' in sys.argv:
         # handled by argparse, just exit
