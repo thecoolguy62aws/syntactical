@@ -1,4 +1,4 @@
-version = "1.5.3" # version shown in --version
+version = "1.6.0" # version shown in --version
 
 
 
@@ -39,7 +39,7 @@ custom_grammar = r"""
     func_def: "func" IDENTIFIER "(" [id_list] ")" block
     return_stmt: "return" expression
     try_stmt: "try" block "catch" IDENTIFIER block
-    if_stmt: "if" expression block ["else" block]
+    if_stmt: "if" expression block ("else" "if" expression block)* ["else" block]
     while_stmt: "while" expression block
     ?for_stmt: "for" IDENTIFIER "in" expression "to" expression block -> range_for
              | "for" "(" assignment SEMICOLON expression SEMICOLON assignment ")" block -> c_for
@@ -131,7 +131,18 @@ class ToPython(Transformer):
     def func_def(self, n, a=None, b=""): return f"def {n}({a or ''}):\n{b}"
     def range_for(self, v, s, e, b): return f"for {v} in range({s}, {e}):\n{b}"
     def c_for(self, i, c, s, b): return f"{i}\nwhile {c}:\n{b}\n    {s}"
-    def if_stmt(self, c, b, eb=None): return f"if {c}:\n{b}" + (f"\nelse:\n{eb}" if eb else "")
+    def if_stmt(self, *parts):
+        result = f"if {parts[0]}:\n{parts[1]}"
+        i = 2
+
+        while i < len(parts) - 1:
+            result += f"\nelif {parts[i]}:\n{parts[i+1]}"
+            i += 2
+
+        if i < len(parts):
+            result += f"\nelse:\n{parts[i]}"
+
+        return result
     def while_stmt(self, c, b): return f"while {c}:\n{b}"
     def with_stmt(self, c, h, b): return f"with {c} as {h}:\n{b}"
     def return_stmt(self, e): return f"return {e}"
