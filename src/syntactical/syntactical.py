@@ -132,10 +132,12 @@ class ToPython(Transformer):
     def range_for(self, v, s, e, b): return f"for {v} in range({s}, {e}):\n{b}"
     def c_for(self, i, c, s, b): return f"{i}\nwhile {c}:\n{b}\n    {s}"
     def if_stmt(self, *parts):
+        parts = [p for p in parts if p is not None]
+
         result = f"if {parts[0]}:\n{parts[1]}"
         i = 2
 
-        while i < len(parts) - 1:
+        while i + 1 < len(parts):
             result += f"\nelif {parts[i]}:\n{parts[i+1]}"
             i += 2
 
