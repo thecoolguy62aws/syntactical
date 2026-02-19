@@ -4,7 +4,7 @@ This changelog was started at version `1.3.1` and will have all versions after t
 
 ## [Unreleased]
 
-- Fix issue #2
+- Fix [issue #2](https://github.com/thecoolguy62aws/syntactical/issues/2)
 
 ## 1.6.0
 
