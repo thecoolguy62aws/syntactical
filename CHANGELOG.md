@@ -2,7 +2,7 @@
 
 This changelog was started at version `1.3.1` and will have all versions after that version. Some earlier versions may be included.
 
-## [Unreleased]
+## 1.6.1
 
 - Fix issue #2
 
