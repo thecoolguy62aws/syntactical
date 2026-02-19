@@ -203,10 +203,7 @@ def main():
         if not args.python:
             exec(python_code, {"__name__": "__main__"})
         else:
-            if args.filename.endswith(".syn"):
-                python_file_name = f"{args.filename[:-4]}.py"
-            else:
-                python_file_name = f"{args.filename}.py"
+            python_file_name = f"{args.filename}.py"
             if os.path.isfile(python_file_name):
                 print("File already exists.")
                 exit(1)
