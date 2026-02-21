@@ -2,7 +2,7 @@
 
 This changelog was started at version `1.3.1` and will have all versions after that version. Some earlier versions may be included.
 
-## [Unreleased]
+## 2.0.0
 
 - Improve annonymous function syntax and move away from `lambda` keyword.
 
