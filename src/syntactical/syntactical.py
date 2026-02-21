@@ -1,4 +1,4 @@
-version = "1.6.1" # version shown in --version
+version = "1.6.2" # version shown in --version
 
 
 
