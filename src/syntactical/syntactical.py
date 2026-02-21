@@ -56,7 +56,9 @@ custom_grammar = r"""
     lambda_expr: "lambda" [id_list] "{" expression "}"
     ?primary: dotted_name | primary "(" [arg_list] ")" -> function_call | primary "[" expression "]" -> index_access
     dotted_name: IDENTIFIER ("." IDENTIFIER)*
-    arg_list: expression ("," expression)*
+    arg_list: argument ("," argument)*
+    ?argument: IDENTIFIER "=" expression   -> kw_argument
+            | expression
     id_list: IDENTIFIER ("," IDENTIFIER)*
     list: "[" [arg_list] "]"
     set: "{" arg_list "}"
@@ -152,6 +154,7 @@ class ToPython(Transformer):
     def index_access(self, t, i): return f"{t}[{i}]"
     def dotted_name(self, *p): return ".".join(map(str, p))
     def arg_list(self, *i): return ", ".join(map(str, i))
+    def kw_argument(self, name, value): return f"{name}={value}"
     def id_list(self, *i): return ", ".join(map(str, i))
     def list(self, i=""): return f"[{i or ''}]"
     def set(self, items): return f"{{{items}}}"
