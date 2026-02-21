@@ -2,6 +2,10 @@
 
 This changelog was started at version `1.3.1` and will have all versions after that version. Some earlier versions may be included.
 
+## [Unreleased]
+
+- Improve annonymous function syntax and move away from `lambda` keyword.
+
 ## 1.6.2
 
 - Fix issue [#5](https://github.com/thecoolguy62aws/syntactical/issues/5)

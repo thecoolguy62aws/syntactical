@@ -53,7 +53,7 @@ custom_grammar = r"""
     ?sum: product (SUM_OP product)*
     ?product: atom (MUL_OP atom)*
     ?atom: lambda_expr | primary | NUMBER | STRING | bool | list | set | dict | "(" expression ")"
-    lambda_expr: "lambda" [id_list] "{" expression "}"
+    lambda_expr: "func" "(" [id_list] ")" "{" expression "}"
     ?primary: dotted_name | primary "(" [arg_list] ")" -> function_call | primary "[" expression "]" -> index_access
     dotted_name: IDENTIFIER ("." IDENTIFIER)*
     arg_list: argument ("," argument)*
