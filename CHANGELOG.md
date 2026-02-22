@@ -2,7 +2,7 @@
 
 This changelog was started at version `1.3.1` and will have all versions after that version. Some earlier versions may be included.
 
-## [Unreleased]
+## 2.2.0
 
 - Improve comments.
 - Add iterable for loops.
