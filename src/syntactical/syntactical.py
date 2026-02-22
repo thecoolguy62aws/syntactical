@@ -176,6 +176,9 @@ class ToPython(Transformer):
 
     # This is the return statement.
     def return_stmt(self, e): return f"return {e}"
+
+
+    # Eventually I'll comment these up too:
     def assignment(self, t, o, v): return f"{t} {o} {v}"
     def index_access(self, t, i): return f"{t}[{i}]"
     def dotted_name(self, *p): return ".".join(map(str, p))
