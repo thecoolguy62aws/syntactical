@@ -1,7 +1,6 @@
 version = "2.1.0" # version shown in --version
 
 
-
 # IMPORTS
 # some of these are here so they get packaged in the install.
 import sys
@@ -17,14 +16,13 @@ import re
 import matplotlib
 import django
 import flask
-os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1' # pygame is a dumbo
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1' # pygame gives a welcome message if this is not included.
 import pygame
 import tkinter
 import time
 import cryptography
 import pynput
 import pick
-
 
 custom_grammar = r"""
     start: line_content+
@@ -96,10 +94,12 @@ class ToPython(Transformer):
         body = "\n".join(map(str, lines))
         return "\n".join(f"    {line}" for line in body.split("\n"))
 
+    # Lambda expression
     def lambda_expr(self, args=None, expr=None):
         if expr is None: return f"lambda: {args}"
         return f"lambda {args}: {expr}"
 
+    # Function calls are here. Here you can find all the functions in the language.
     def function_call(self, name, args=""):
         py_name = str(name)
         call_args = str(args) if args is not None else ""
@@ -127,10 +127,17 @@ class ToPython(Transformer):
     def import_stmt(self, name, alias=None): return f"import {name} as {alias}" if alias else f"import {name}"
     def from_stmt(self, name, module): return f"from {name} import {module}"
     def try_stmt(self, t_b, e_v, c_b): return f"try:\n{t_b}\nexcept Exception as {e_v}:\n{c_b}"
+
+    # Here's the class def:
     def class_def(self, n, b): return f"class {n}:\n{b}"
+
+    # Here's the function def:
     def func_def(self, n, a=None, b=""): return f"def {n}({a or ''}):\n{b}"
+
     def range_for(self, v, s, e, b): return f"for {v} in range({s}, {e}):\n{b}"
     def c_for(self, i, c, s, b): return f"{i}\nwhile {c}:\n{b}\n    {s}"
+
+    # Here's the if statement, it's kind of complicated:
     def if_stmt(self, *parts):
         parts = [p for p in parts if p is not None]
 
@@ -145,8 +152,14 @@ class ToPython(Transformer):
             result += f"\nelse:\n{parts[i]}"
 
         return result
+    
+    # Here's the while statement:
     def while_stmt(self, c, b): return f"while {c}:\n{b}"
+
+    # Here's the with statement:
     def with_stmt(self, c, h, b): return f"with {c} as {h}:\n{b}"
+
+    # This is the return statement.
     def return_stmt(self, e): return f"return {e}"
     def assignment(self, t, o, v): return f"{t} {o} {v}"
     def index_access(self, t, i): return f"{t}[{i}]"
@@ -181,9 +194,10 @@ class ToPython(Transformer):
     def EQUAL(self, t): return str(t)
     def SEMICOLON(self, t): return ";"
 
+# This is the main function:
 def main():
     arg_parser = argparse.ArgumentParser(description="Syntactical Language Runner")
-
+    #                             This is the version declared in the top of the file ↓
     arg_parser.add_argument('--version', action='version', version=f'Syntactical {version}')
 
     arg_parser.add_argument("filename", help="Path to your script")
