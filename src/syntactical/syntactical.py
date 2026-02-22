@@ -103,29 +103,27 @@ class ToPython(Transformer):
     def function_call(self, name, args=""):
         py_name = str(name)
         call_args = str(args) if args is not None else ""
+
         if py_name == "print": return f"print({call_args}, end='')"
         if py_name == "println": return f"print({call_args})"
         if py_name == "input": return f"input({call_args})"
         if py_name == "system": return f"os.system({call_args})"
-        
 
-        if py_name == "json_encode": return f"json.dumps({call_args})"
-        if py_name == "json_decode": return f"json.loads({call_args})"
-
+        if py_name == "json_dumps": return f"json.dumps({call_args})"
+        if py_name == "json_dump": return f"json.dump({call_args})"
+        if py_name == "json_loads": return f"json.loads({call_args})"
+        if py_name == "json_load": return f"json.load({call_args})"
 
         if py_name == "path": return f"Path({call_args})"
-
         
         exits = ["exit", "stop"] # aliases for exit()
         if py_name in exits: return f"exit({call_args})"
 
-        
         return f"{py_name}({call_args})"
 
     def STRING(self, token):
         raw = str(token)
         return f"f{raw}" if "{" in raw and "}" in raw else raw
-
     def import_stmt(self, name, alias=None): return f"import {name} as {alias}" if alias else f"import {name}"
     def from_stmt(self, name, module): return f"from {name} import {module}"
     def try_stmt(self, t_b, e_v, c_b): return f"try:\n{t_b}\nexcept Exception as {e_v}:\n{c_b}"
