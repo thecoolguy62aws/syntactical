@@ -2,7 +2,7 @@
 
 This changelog was started at version `1.3.1` and will have all versions after that version. Some earlier versions may be included.
 
-## [Unreleased]
+## 2.1.0
 
 - Start using semantic commit messages.
 - Change names of json functions and add some new ones.
