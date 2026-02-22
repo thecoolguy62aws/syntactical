@@ -4,6 +4,7 @@ __pycache__/
 build/
 dist/
 test.syn
+test.syn.py
 test.py
 syntactical.exe
 main.spec
