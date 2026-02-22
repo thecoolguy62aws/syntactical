@@ -30,10 +30,11 @@ custom_grammar = r"""
     ?statement: import_stmt | with_stmt | class_def | func_def | return_stmt 
             | assignment | if_stmt | while_stmt | for_stmt | try_stmt 
             | break_stmt | continue_stmt | pass_stmt
-            | expression | from_stmt
+            | expression | from_stmt | global_stmt
     break_stmt: "break"
     continue_stmt: "continue"
     pass_stmt: "pass"
+    global_stmt: "global" id_list
     block: "{" line_content+ "}"
     import_stmt: "import" IDENTIFIER ["as" IDENTIFIER]
     from_stmt: "from" IDENTIFIER "import" IDENTIFIER
@@ -196,6 +197,7 @@ class ToPython(Transformer):
         for idx in indices: res += f"[{idx}]"
         return res
     def comparison(self, *a): return " ".join(map(str, a))
+    def global_stmt(self, i): return f"global {i}"
     def sum(self, *a): return " ".join(map(str, a))
     def product(self, *a): return " ".join(map(str, a))
     def IDENTIFIER(self, t): return str(t)
