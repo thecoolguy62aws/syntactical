@@ -4,8 +4,8 @@ This changelog was started at version `1.3.1` and will have all versions after t
 
 ## [Unreleased]
 
-- style: start using semantic commit messages
-- impr(json): change names of json functions and add some new ones
+- Start using semantic commit messages.
+- Change names of json functions and add some new ones.
 
 ## 2.0.0
 
