@@ -40,7 +40,8 @@ custom_grammar = r"""
     if_stmt: "if" expression block ("else" "if" expression block)* ["else" block]
     while_stmt: "while" expression block
     ?for_stmt: "for" IDENTIFIER "in" expression "to" expression block -> range_for
-             | "for" "(" assignment SEMICOLON expression SEMICOLON assignment ")" block -> c_for
+            | "for" IDENTIFIER "in" expression block               -> iterable_for
+            | "for" "(" assignment SEMICOLON expression SEMICOLON assignment ")" block -> c_for
     assignment: target (EQUAL | INPLACE_OP) expression
     inc_dec_stmt: target INC_DEC_OP
     ?expression: logic_or
@@ -134,8 +135,11 @@ class ToPython(Transformer):
     # Here's the function def:
     def func_def(self, n, a=None, b=""): return f"def {n}({a or ''}):\n{b}"
 
+    # Here's the for loops
     def range_for(self, v, s, e, b): return f"for {v} in range({s}, {e}):\n{b}"
     def c_for(self, i, c, s, b): return f"{i}\nwhile {c}:\n{b}\n    {s}"
+    def iterable_for(self, var, iterable, body):
+        return f"for {var} in {iterable}:\n{body}"
 
     # Here's the if statement, it's kind of complicated:
     def if_stmt(self, *parts):
