@@ -29,7 +29,7 @@ custom_grammar = r"""
     ?line_content: statement (SEMICOLON statement)* [SEMICOLON]
     ?statement: import_stmt | with_stmt | class_def | func_def | return_stmt 
             | assignment | if_stmt | while_stmt | for_stmt | try_stmt 
-            | break_stmt | continue_stmt | pass_stmt
+            | break_stmt | continue_stmt | pass_stmt | inc_dec_stmt
             | expression | from_stmt | global_stmt
     break_stmt: "break"
     continue_stmt: "continue"
@@ -179,6 +179,10 @@ class ToPython(Transformer):
 
 
     # Eventually I'll comment these up too:
+    def inc_dec_stmt(self, name, op):
+        if op == "++": return f"{name} = {name} + 1"
+        elif op == "--": return f"{name} = {name} - 1"
+        else: print("transformer error: bad increment operators")
     def assignment(self, t, o, v): return f"{t} {o} {v}"
     def index_access(self, t, i): return f"{t}[{i}]"
     def dotted_name(self, *p): return ".".join(map(str, p))
