@@ -28,7 +28,11 @@ custom_grammar = r"""
     start: line_content+
     ?line_content: statement (SEMICOLON statement)* [SEMICOLON]
     ?statement: import_stmt | with_stmt | class_def | func_def | return_stmt 
-             | assignment | if_stmt | while_stmt | for_stmt | try_stmt | expression | from_stmt
+            | assignment | if_stmt | while_stmt | for_stmt | try_stmt 
+            | break_stmt | continue_stmt
+            | expression | from_stmt
+    break_stmt: "break"
+    continue_stmt: "continue"
     block: "{" line_content+ "}"
     import_stmt: "import" IDENTIFIER ["as" IDENTIFIER]
     from_stmt: "from" IDENTIFIER "import" IDENTIFIER
@@ -140,6 +144,10 @@ class ToPython(Transformer):
     def c_for(self, i, c, s, b): return f"{i}\nwhile {c}:\n{b}\n    {s}"
     def iterable_for(self, var, iterable, body):
         return f"for {var} in {iterable}:\n{body}"
+
+    # Break and continue statements:
+    def break_stmt(self): return "break"
+    def continue_stmt(self): return "continue"
 
     # Here's the if statement, it's kind of complicated:
     def if_stmt(self, *parts):

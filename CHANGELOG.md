@@ -6,6 +6,7 @@ This changelog was started at version `1.3.1` and will have all versions after t
 
 - Improve comments.
 - Add iterable for loops.
+- Add `break` and `continue` statements.
 
 ## 2.1.0
 
