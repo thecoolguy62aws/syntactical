@@ -4,7 +4,8 @@ This changelog was started at version `1.3.1` and will have all versions after t
 
 ## [Unreleased]
 
-- Improve comments
+- Improve comments.
+- Add iterable for loops.
 
 ## 2.1.0
 
