@@ -2,6 +2,11 @@
 
 This changelog was started at version `1.3.1` and will have all versions after that version. Some earlier versions may be included.
 
+## [Unreleased]
+
+- style: start using semantic commit messages
+- impr(json): change names of json functions and add some new ones
+
 ## 2.0.0
 
 - Improve annonymous function syntax and move away from `lambda` keyword.
