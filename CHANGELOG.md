@@ -2,6 +2,10 @@
 
 This changelog was started at version `1.3.1` and will have all versions after that version. Some earlier versions may be included.
 
+## [Unreleased]
+
+- Fix some code styling.
+
 ## 2.2.1
 
 - Fix issue [#7](https://github.com/thecoolguy62aws/syntactical/issues/7)
