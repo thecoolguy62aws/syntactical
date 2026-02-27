@@ -25,7 +25,7 @@ import pynput
 import pick
 
 # This is the main gramer of the language:
-custom_grammar = r"""
+grammar = r"""
     start: line_content+
     ?line_content: statement (SEMICOLON statement)* [SEMICOLON]
     ?statement: import_stmt | with_stmt | class_def | func_def | return_stmt 
@@ -236,7 +236,7 @@ def main():
 
     try:
         with open(args.filename, "r") as f: source = f.read()
-        l_parser = Lark(custom_grammar, parser='lalr')
+        l_parser = Lark(grammar, parser='lalr')
         python_code = ToPython().transform(l_parser.parse(source))
 
         if not args.python:
