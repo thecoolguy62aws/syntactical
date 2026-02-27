@@ -1,4 +1,4 @@
-version = "2.2.1" # version shown in --version
+version = "2.2.2" # version shown in --version
 
 
 # IMPORTS
