@@ -1,6 +1,3 @@
-version = "2.2.2" # version shown in --version
-
-
 # IMPORTS
 # some of these are here so they get packaged in the install.
 import sys
@@ -23,6 +20,7 @@ import time
 import cryptography
 import pynput
 import pick
+from syntactical import __version__ # This imports the __version__ variable from __init__.py
 
 # This is the main gramer of the language:
 grammar = r"""
@@ -219,8 +217,8 @@ class ToPython(Transformer):
 # This is the main function with the CLI arguments and stuff:
 def main():
     arg_parser = argparse.ArgumentParser(description="Syntactical Language Runner")
-    #                             This is the version declared in the top of the file ↓
-    arg_parser.add_argument('--version', action='version', version=f'Syntactical {version}')
+
+    arg_parser.add_argument('--version', action='version', version=f'Syntactical {__version__}')
 
     arg_parser.add_argument("filename", help="Path to your script")
 
