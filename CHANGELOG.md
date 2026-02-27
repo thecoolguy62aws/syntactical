@@ -5,6 +5,7 @@ This changelog was started at version `1.3.1` and will have all versions after t
 ## [Unreleased]
 
 - Make `--version` more robust and stop using hardcoding for versions.
+- Minor README changes.
 
 ## 2.2.2
 

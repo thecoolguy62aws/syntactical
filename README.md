@@ -1,6 +1,6 @@
 # Syntactical
 
-**_The programing language of the future._**
+> **_The programing language of the future._**
 
 ### What is Syntactical?
 
