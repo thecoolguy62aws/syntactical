@@ -5,6 +5,7 @@ This changelog was started at version `1.3.1` and will have all versions after t
 ## [Unreleased]
 
 - Fix some code styling.
+- Add some more code comments.
 
 ## 2.2.1
 
