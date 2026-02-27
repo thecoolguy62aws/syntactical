@@ -217,7 +217,7 @@ class ToPython(Transformer):
     def EQUAL(self, t): return str(t)
     def SEMICOLON(self, t): return ";"
 
-# This is the main function:
+# This is the main function with the CLI arguments and stuff:
 def main():
     arg_parser = argparse.ArgumentParser(description="Syntactical Language Runner")
     #                             This is the version declared in the top of the file ↓
