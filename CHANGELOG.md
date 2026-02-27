@@ -6,6 +6,7 @@ This changelog was started at version `1.3.1` and will have all versions after t
 
 - Fix some code styling.
 - Add some more code comments.
+- Fix bug where pathlib not being installed on older versions of Python stopped anything from working.
 
 ## 2.2.1
 
