@@ -2,11 +2,11 @@
 
 This changelog was started at version `1.3.1` and will have all versions after that version. ~~Some earlier versions may be included.~~ I have added _all_ earlier versions to this changelog.
 
-## [Unreleased]
+## 2.2.2
 
 - Fix some code styling.
 - Add some more code comments.
-- Fix bug where pathlib not being installed on older versions of Python stopped anything from working.
+- **VITAL**: Fix bug where pathlib and/or pillow not being installed on older versions of Python stopped anything from working.
 
 ## 2.2.1
 
