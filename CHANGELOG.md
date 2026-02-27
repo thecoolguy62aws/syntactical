@@ -1,6 +1,6 @@
 # Changelog
 
-This changelog was started at version `1.3.1` and will have all versions after that version. Some earlier versions may be included.
+This changelog was started at version `1.3.1` and will have all versions after that version. ~~Some earlier versions may be included.~~ I have added _all_ earlier versions to this changelog.
 
 ## [Unreleased]
 
@@ -77,3 +77,54 @@ This changelog was started at version `1.3.1` and will have all versions after t
 - Add publish script to gitignore
 - Add PyPi description
 - Add changelog
+
+## 1.3.1
+
+- Start switching from a Windows EXE file to a PIP install.
+
+## 1.1.1
+
+I am adding this _long_ after the real version, and my git logs are **BAD**. I don't really understand these so I'll just dump them here (you'll see what I mean):
+
+```
+657e091 (tag: v1.1.1) remove keyboard module
+bce116f ignore venv
+96fbfc6 GUESS I CANT IGNORE IT STUPID GIT
+143b4b0 ignore this
+11ecfd7 fix build
+716a15f remove scrapy
+f4ed8f8 change compile
+a63689c change comile
+a2f40b2 new compile
+bd725c0 actually, i want that there
+e7f2296 change build system
+5f4509a that shouldn't be there
+4984f0b hi scrapy
+0282dd9 bye scrapy
+57355d0 fix pygame
+d794630 Add build script
+a4b7fba Add pynput and pick support
+dc0b5ea dumb comment
+```
+
+## 1.1.0
+
+- Change the format of JSON Functions.
+- I added, then removed `.env` support (according to my git logs). I'm not sure why.
+- Add `--python` and `-p` options.
+- Change lambda syntax.
+- Change lambda syntax (again).
+- Fix modules.
+- I also had a git commit with this message:
+
+  ```
+  3609aa7 never mind! it doesn't work like that
+  ```
+
+  I'm not entirely sure what this means.
+
+## 1.0.0 alpha
+
+- **🎉 FIRST COMMIT!**
+- Start making docs.
+- Add basics of interpreter.
