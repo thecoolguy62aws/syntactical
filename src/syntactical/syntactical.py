@@ -24,6 +24,7 @@ import cryptography
 import pynput
 import pick
 
+# This is the main gramer of the language:
 custom_grammar = r"""
     start: line_content+
     ?line_content: statement (SEMICOLON statement)* [SEMICOLON]
