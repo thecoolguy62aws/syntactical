@@ -2,7 +2,7 @@
 
 This changelog was started at version `1.3.1` and will have all versions after that version. ~~Some earlier versions may be included.~~ I have added _all_ earlier versions to this changelog.
 
-## [Unreleased]
+## 3.0.0
 
 - Make `--version` more robust and stop using hardcoding for versions.
 - Minor README changes.

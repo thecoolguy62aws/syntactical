@@ -1,6 +1,6 @@
 [project]
 name = "syntactical"
-version = "2.2.2"
+version = "3.0.0"
 dependencies = [
     "asgiref==3.11.1",
     "attrs==25.4.0",
