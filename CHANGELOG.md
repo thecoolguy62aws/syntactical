@@ -6,6 +6,7 @@ This changelog was started at version `1.3.1` and will have all versions after t
 
 - Make `--version` more robust and stop using hardcoding for versions.
 - Minor README changes.
+- **BREAKING**: Change lambda syntax (for the last time)
 
 ## 2.2.2
 
