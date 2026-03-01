@@ -178,8 +178,8 @@ class ToPython(Transformer):
     # Eventually I'll comment these up too:
     def inc_dec_stmt(self, name, op):
         if op == "++": return f"{name} = {name} + 1"
-        elif op == "--": return f"{name} = {name} - 1"
-        else: print("transformer error: bad increment operators")
+        elif op == "--": return f"{name} == {name} - 1"
+        else: print("Syntactical (no pun intended) Error: bad incrementer")
     def assignment(self, t, o, v): return f"{t} {o} {v}"
     def index_access(self, t, i): return f"{t}[{i}]"
     def dotted_name(self, *p): return ".".join(map(str, p))
@@ -250,4 +250,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
