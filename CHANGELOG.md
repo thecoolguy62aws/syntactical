@@ -5,6 +5,7 @@ This changelog will include all significant changes to the Syntactical programmi
 ## [Unreleased]
 
 - Immprove an error message.
+- Use less dependancies.
 
 ## 3.0.0
 
