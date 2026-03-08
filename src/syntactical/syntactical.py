@@ -1,25 +1,8 @@
-# IMPORTS
-# some of these are here so they get packaged in the install.
 import sys
 import argparse
 from lark import Lark, Transformer, v_args
 import os
-import requests
-import pathlib
-import numpy
-import json
-import datetime
-import re
-import matplotlib
-import django
-import flask
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1' # pygame gives a welcome message if this is not included.
-import pygame
-import tkinter
-import time
-import cryptography
-import pynput
-import pick
 from syntactical import __version__ # This imports the __version__ variable from __init__.py
 
 # This is the main gramer of the language:
