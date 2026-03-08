@@ -2,7 +2,6 @@ import sys
 import argparse
 from lark import Lark, Transformer, v_args
 import os
-os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1' # pygame gives a welcome message if this is not included.
 from syntactical import __version__ # This imports the __version__ variable from __init__.py
 
 # This is the main gramer of the language:
