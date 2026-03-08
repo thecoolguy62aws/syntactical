@@ -2,7 +2,7 @@
 
 This changelog will include all significant changes to the Syntactical programming language.
 
-## [Unreleased]
+## 3.0.1
 
 - Immprove an error message.
 - Use less dependancies.
