@@ -118,7 +118,7 @@ class ToPython(Transformer):
     def class_def(self, n, b): return f"class {n}:\n{b}"
 
     # Here's the function def:
-    def func_def(self, n, a=None, b=""): return f"def {n}({a or ''}):\n{b}"
+    def func_def(self, n, a=None, b=""): return f"def {n}({a or ''}):\n{b}" if n != "initialization" else f"def __init__({a or ''}):\n{b}"
 
     # Here's the for loops
     def range_for(self, v, s, e, b): return f"for {v} in range({s}, {e}):\n{b}"

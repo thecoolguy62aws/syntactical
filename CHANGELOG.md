@@ -2,6 +2,10 @@
 
 This changelog will include all significant changes to the Syntactical programming language.
 
+## [Unreleased]
+
+- Make it so functions called "initialization" act as the init method for a class.
+
 ## 3.0.1
 
 - Immprove an error message.
