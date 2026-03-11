@@ -73,7 +73,7 @@ grammar = r"""
 class ToPython(Transformer):
     def start(self, *lines): 
         # Inject imports automatically
-        return "import os\nimport json\n" + "\n".join(map(str, lines))
+        return "import os\nimport json\nimport time\n" + "\n".join(map(str, lines))
 
     def line_content(self, *statements):
         return "\n".join(str(s) for s in statements if str(s) != ";")
@@ -104,6 +104,8 @@ class ToPython(Transformer):
         
         exits = ["exit", "stop"] # aliases for exit()
         if py_name in exits: return f"exit({call_args})"
+
+        if py_name == "sleep": return f"time.sleep({call_args})"
 
         return f"{py_name}({call_args})"
 

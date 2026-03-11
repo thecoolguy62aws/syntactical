@@ -2,6 +2,10 @@
 
 This changelog will include all significant changes to the Syntactical programming language.
 
+## [Unreleased]
+
+- Add `sleep()` function.
+
 ## 3.1.0
 
 - Make it so functions called "initialization" act as the init method for a class.
