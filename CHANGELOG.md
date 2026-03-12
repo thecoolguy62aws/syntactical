@@ -2,7 +2,7 @@
 
 This changelog will include all significant changes to the Syntactical programming language.
 
-## [Unreleased]
+## 3.2.0
 
 - Add `sleep()` function.
 - Add externally importable functions for compiling and running Syntactical from your own Python or Syntactical programs.
