@@ -17,8 +17,9 @@ grammar = r"""
     pass_stmt: "pass"
     global_stmt: "global" id_list
     block: "{" line_content+ "}"
-    import_stmt: "import" IDENTIFIER ["as" IDENTIFIER]
-    from_stmt: "from" IDENTIFIER "import" IDENTIFIER
+    module_path: IDENTIFIER (("." IDENTIFIER) | ("/" IDENTIFIER))*
+    import_stmt: "import" module_path ["as" IDENTIFIER]
+    from_stmt: "from" module_path "import" IDENTIFIER
     with_stmt: "with" expression "as" IDENTIFIER block
     class_def: "class" IDENTIFIER block
     func_def: "func" IDENTIFIER "(" [id_list] ")" block
@@ -120,8 +121,64 @@ class ToPython(Transformer):
     def STRING(self, token):
         raw = str(token)
         return f"f{raw}" if "{" in raw and "}" in raw else raw
-    def import_stmt(self, name, alias=None): return f"import {name} as {alias}" if alias else f"import {name}"
+
+    # These next few methods are import statement stuff:        
+    def module_path(self, *parts):
+        return "".join(str(p) for p in parts).replace("/", ".")
+
+    def import_stmt(self, name, alias=None):
+        module = str(name)
+        alias_name = alias if alias else module.split(".")[-1]
+
+        code = f"""
+import os, sys, importlib.util
+
+_module_name = "{module}"
+_module_path = _module_name.replace(".", os.sep)
+
+_syn_file = None
+_py_file = None
+
+# Search current dir + sys.path
+for _p in [""] + sys.path:
+    syn_candidate = os.path.join(_p, _module_path + ".syn")
+    py_candidate = os.path.join(_p, _module_path + ".py")
+
+    if os.path.isfile(syn_candidate):
+        _syn_file = syn_candidate
+        break
+
+    if os.path.isfile(py_candidate):
+        _py_file = py_candidate
+        break
+
+if _syn_file:
+    from syntactical import toPython
+
+    with open(_syn_file, "r") as f:
+        _syn_code = f.read()
+
+    _py_code = toPython(_syn_code)
+
+    _module_globals = {{}}
+    exec(_py_code, _module_globals)
+
+    {alias_name} = type("SyntacticalModule", (), _module_globals)
+
+elif _py_file:
+    spec = importlib.util.spec_from_file_location("{alias_name}", _py_file)
+    {alias_name} = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module({alias_name})
+
+else:
+    import importlib
+    {alias_name} = importlib.import_module(_module_name)
+        """
+        return code
+
     def from_stmt(self, name, module): return f"from {name} import {module}"
+
+
     def try_stmt(self, t_b, e_v, c_b): return f"try:\n{t_b}\nexcept Exception as {e_v}:\n{c_b}"
 
     # Here's the class def:
