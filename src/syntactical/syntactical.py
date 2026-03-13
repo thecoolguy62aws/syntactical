@@ -92,19 +92,27 @@ class ToPython(Transformer):
         py_name = str(name)
         call_args = str(args) if args is not None else ""
 
+        # Print functions:
         if py_name == "print": return f"print({call_args}, end='')"
         if py_name == "println": return f"print({call_args})"
+
+        # Input functions:
         if py_name == "input": return f"input({call_args})"
+
+        # System functions:
         if py_name == "system": return f"os.system({call_args})"
 
+        # All json functions:
         if py_name == "json_dumps": return f"json.dumps({call_args})"
         if py_name == "json_dump": return f"json.dump({call_args})"
         if py_name == "json_loads": return f"json.loads({call_args})"
         if py_name == "json_load": return f"json.load({call_args})"
         
+        # Exit and stop functions:
         exit_aliases = ["exit", "stop"] # aliases for exit()
         if py_name in exit_aliases: return f"exit({call_args})"
 
+        # Time sleep function:
         if py_name == "sleep": return f"time.sleep({call_args})"
 
         return f"{py_name}({call_args})"
