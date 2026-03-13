@@ -26,7 +26,7 @@ This changelog will include all significant changes to the Syntactical programmi
 
 - Fix some code styling.
 - Add some more code comments.
-- **VITAL**: Fix bug where pathlib and/or pillow not being installed on older versions of Python stopped anything from working.
+- **VITAL**: Fix bug where pathlib and/or pillow not being installed stopped Syntactical from running.
 
 ## 2.2.1
 
