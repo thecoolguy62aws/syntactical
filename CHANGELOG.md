@@ -2,7 +2,7 @@
 
 This changelog will include all significant changes to the Syntactical programming language.
 
-## [Unreleased]
+## 3.3.0
 
 - Fix the bug where the minus incrementer wouldn't work no matter what.
 - Add feature so that `import` can be used to import other Python or Syntactical files into your code.
