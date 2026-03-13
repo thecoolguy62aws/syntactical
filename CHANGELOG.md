@@ -2,6 +2,12 @@
 
 This changelog will include all significant changes to the Syntactical programming language.
 
+## 3.2.1
+
+- Some minor tweaks to documentation.
+- Refactors in code.
+- This is mostly a test release.
+
 ## 3.2.0
 
 - Add `sleep()` function.
