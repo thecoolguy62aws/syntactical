@@ -1,11 +1,5 @@
-from importlib.metadata import version, PackageNotFoundError
 from lark import Lark
 from syntactical import syntactical
-
-try:
-    __version__ = version("syntactical")
-except PackageNotFoundError:
-    __version__ = "uninstalled" 
 
 # This is for importing for use in compiling Syntactical with your own Python (or Syntactical!) program
 def toPython(source):

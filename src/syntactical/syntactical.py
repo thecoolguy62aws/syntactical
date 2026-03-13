@@ -2,7 +2,7 @@ import sys
 import argparse
 from lark import Lark, Transformer, v_args
 import os
-from syntactical import __version__ # This imports the __version__ variable from __init__.py
+from syntactical import version # This imports the __version__ variable from version.py
 
 # This is the main gramer of the language:
 grammar = r"""
@@ -267,7 +267,7 @@ else:
 def main():
     arg_parser = argparse.ArgumentParser(description="Syntactical Language Runner")
 
-    arg_parser.add_argument('--version', action='version', version=f'Syntactical {__version__}')
+    arg_parser.add_argument('--version', action='version', version=f'Syntactical {version.__version__}')
 
     arg_parser.add_argument("filename", help="Path to your script")
 

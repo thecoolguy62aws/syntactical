@@ -2,6 +2,10 @@
 
 This changelog will include all significant changes to the Syntactical programming language.
 
+## [Unreleased]
+
+- Fix bug where circular imports were present due to how the version variable was defined.
+
 ## 3.3.1
 
 - Fix a bug where you can't import the externally importable functions.
