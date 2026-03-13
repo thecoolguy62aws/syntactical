@@ -2,7 +2,7 @@
 
 This changelog will include all significant changes to the Syntactical programming language.
 
-## [Unreleased]
+## 3.3.1
 
 - Fix a bug where you can't import the externally importable functions.
 
