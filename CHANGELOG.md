@@ -2,6 +2,10 @@
 
 This changelog will include all significant changes to the Syntactical programming language.
 
+## [Unreleased]
+
+- Fix a bug where you can't import the externally importable functions.
+
 ## 3.3.0
 
 - Fix the bug where the minus incrementer wouldn't work no matter what.
