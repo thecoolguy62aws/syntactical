@@ -72,7 +72,7 @@ grammar = r"""
 @v_args(inline=True)
 class ToPython(Transformer):
     def start(self, *lines): 
-        # Inject imports automatically
+        # Inject imports automatically:
         return "import os\nimport json\nimport time\n" + "\n".join(map(str, lines))
 
     def line_content(self, *statements):
@@ -82,12 +82,12 @@ class ToPython(Transformer):
         body = "\n".join(map(str, lines))
         return "\n".join(f"    {line}" for line in body.split("\n"))
 
-    # Lambda expression
+    # Lambda expression:
     def lambda_expr(self, args=None, expr=None):
         if expr is None: return f"lambda: {args}"
         return f"lambda {args}: {expr}"
 
-    # Function calls are here. Here you can find all the functions in the language.
+    # Function calls are here. Here you can find all the functions in the language:
     def function_call(self, name, args=""):
         py_name = str(name)
         call_args = str(args) if args is not None else ""
