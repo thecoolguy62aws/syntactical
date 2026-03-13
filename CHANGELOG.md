@@ -7,6 +7,7 @@ This changelog will include all significant changes to the Syntactical programmi
 - Some minor tweaks to documentation.
 - Refactors in code.
 - This is mostly a test release.
+- Starting using GitHub releases (again).
 
 ## 3.2.0
 
