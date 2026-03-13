@@ -102,8 +102,8 @@ class ToPython(Transformer):
         if py_name == "json_loads": return f"json.loads({call_args})"
         if py_name == "json_load": return f"json.load({call_args})"
         
-        exits = ["exit", "stop"] # aliases for exit()
-        if py_name in exits: return f"exit({call_args})"
+        exit_aliases = ["exit", "stop"] # aliases for exit()
+        if py_name in exit_aliases: return f"exit({call_args})"
 
         if py_name == "sleep": return f"time.sleep({call_args})"
 
