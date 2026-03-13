@@ -263,18 +263,6 @@ else:
     def EQUAL(self, t): return str(t)
     def SEMICOLON(self, t): return ";"
 
-# This is for importing for use in compiling Syntactical with your own Python (or Syntactical!) program
-def toPython(source):
-    l_parser = Lark(grammar, parser='lalr')
-    python_code = ToPython().transform(l_parser.parse(source))
-    return python_code
-
-# This is for importing for use in running Syntactical with your own Python (or Syntactical!) program
-def runSyntactical(source):
-    l_parser = Lark(grammar, parser='lalr')
-    python_code = ToPython().transform(l_parser.parse(source))
-    exec(python_code, {"__name__": "__main__"})
-
 # This is the main function with the CLI arguments and stuff:
 def main():
     arg_parser = argparse.ArgumentParser(description="Syntactical Language Runner")
