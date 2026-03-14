@@ -73,7 +73,7 @@ grammar = r"""
 @v_args(inline=True)
 class ToPython(Transformer):
 
-    # The start:
+    # The start; this is like where the transformer well, starts, just what it does first:
     def start(self, *lines): 
         # Inject imports automatically:
         return "import os\nimport json\nimport time\n" + "\n".join(map(str, lines))
