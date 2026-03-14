@@ -6,6 +6,7 @@ This changelog will include all significant changes to the Syntactical programmi
 
 - Rename function `toPython()` to `compile()`
 - **DEPRECATED**: `toPython()` still works (for now), but will be removed soon; stop using it.
+- GitHub Releases had some issues, so I guess I'm stopping using it *again*. All releases will only be on PyPI now.
 
 ## 3.3.2
 
