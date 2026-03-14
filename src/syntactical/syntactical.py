@@ -4,7 +4,7 @@ from lark import Lark, Transformer, v_args
 import os
 from syntactical import version # This imports the __version__ variable from version.py
 
-# This is the main gramer of the language:
+# This is the main grammar of the language:
 grammar = r"""
     start: line_content+
     ?line_content: statement (SEMICOLON statement)* [SEMICOLON]
