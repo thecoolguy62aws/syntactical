@@ -22,4 +22,4 @@ Syntactical has a VSCode extension! See it's GitHub Repository [here](https://gi
 
 **Here's a small section with some of the new things with Syntactical**:
 
-> We are switching back to GitHub Releases! Now a GitHub Actions script is used to publish to PyPI, so the only thing we need to do to publish a new release, is to put it on GitHub. Syntactical can still be installed with Pip.
+> We are (yet again) switching away from GitHub Releases do to some issues with it. All new releases will just be on PyPI and old releases have been removed from GitHub Releases. New releases will be automatically published to PyPI using a GitHub Workflow.
