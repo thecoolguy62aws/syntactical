@@ -327,27 +327,41 @@ else:
 
 # This is the main function with the CLI arguments and stuff:
 def main():
+    # Just the arg_parser object:
     arg_parser = argparse.ArgumentParser(description="Syntactical Language Runner")
 
+    # --version prints the current version of Syntactical in your terminal:
     arg_parser.add_argument('--version', action='version', version=f'Syntactical {version.__version__}')
 
+    # The path to the Syntactical program/script:
     arg_parser.add_argument("filename", help="Path to your script")
 
+    # This is --python; if used code gets saved as a Python file instead of running:
     arg_parser.add_argument("-p", "--python", action="store_true", help="Instead of running the code, save it as python in the same directory.")
 
     args, unknown = arg_parser.parse_known_args()
 
+    # This checks if --version is used, if it is then argparse can handle it and we'll just exit:
     if '--version' in sys.argv:
         # handled by argparse, just exit
         exit(0)
 
+    # Here your Syntactical code gets parsed, converted to Python, then either run or saved to a file:
     try:
+        # Here the file you specified gets read:
         with open(args.filename, "r") as f: source = f.read()
+
+        # Now the parser parses it:
         l_parser = Lark(grammar, parser='lalr')
+
+        # Then the Python code gets generated with that "ToPython" class up there:
         python_code = ToPython().transform(l_parser.parse(source))
 
+        # If the --python switch was not specified, run the code:
         if not args.python:
             exec(python_code, {"__name__": "__main__"})
+
+        # If the --python switch was used, save the code as a file:
         else:
             python_file_name = f"{args.filename}.py"
             if os.path.isfile(python_file_name):
@@ -356,8 +370,12 @@ def main():
             else:
                 with open(python_file_name, 'w') as f:
                     f.write(python_code)
+
+    # If an exception gets called print an error:
     except Exception as e:
         print(f"Syntactical (no pun intended) Error: {e}")
 
+# Execute the whole program! When installed with Pip, the main() function is just run when you type "syntactical" in your terminal (it never gets to this)
+# Please note: Syntactical only functions properly when installed with Pip, and some features won't work while running it from this file (specifically imports)
 if __name__ == "__main__":
     main()
