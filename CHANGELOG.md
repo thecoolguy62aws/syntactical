@@ -2,7 +2,7 @@
 
 This changelog will include all significant changes to the Syntactical programming language.
 
-## [Unreleased]
+## 3.3.3
 
 - Rename function `toPython()` to `compile()`
 - **DEPRECATED**: `toPython()` still works (for now), but will be removed soon; stop using it.
