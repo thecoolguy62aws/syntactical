@@ -178,7 +178,6 @@ else:
 
     def from_stmt(self, name, module): return f"from {name} import {module}"
 
-
     def try_stmt(self, t_b, e_v, c_b): return f"try:\n{t_b}\nexcept Exception as {e_v}:\n{c_b}"
 
     # Here's the class def:
