@@ -2,6 +2,11 @@
 
 This changelog will include all significant changes to the Syntactical programming language.
 
+## [Unreleased]
+
+- Lots of improvements to code comments.
+- Some new/improved documentation.
+
 ## 3.3.3
 
 - Rename function `toPython()` to `compile()`
