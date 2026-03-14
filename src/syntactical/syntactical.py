@@ -69,7 +69,7 @@ grammar = r"""
     %ignore WS
     %ignore COMMENT
 """
-
+# This is the class for the main transformer; it is like the core of this whole language:
 @v_args(inline=True)
 class ToPython(Transformer):
 
