@@ -72,13 +72,17 @@ grammar = r"""
 
 @v_args(inline=True)
 class ToPython(Transformer):
+
+    # The start:
     def start(self, *lines): 
         # Inject imports automatically:
         return "import os\nimport json\nimport time\n" + "\n".join(map(str, lines))
 
+    # Litterly just the content on a line:
     def line_content(self, *statements):
         return "\n".join(str(s) for s in statements if str(s) != ";")
     
+    # A block (like the code in a if statement with {curly brackets}):
     def block(self, *lines):
         body = "\n".join(map(str, lines))
         return "\n".join(f"    {line}" for line in body.split("\n"))
@@ -118,6 +122,7 @@ class ToPython(Transformer):
 
         return f"{py_name}({call_args})"
 
+    # A string:
     def STRING(self, token):
         raw = str(token)
         return f"f{raw}" if "{" in raw and "}" in raw else raw
@@ -225,44 +230,99 @@ else:
     # This is the return statement.
     def return_stmt(self, e): return f"return {e}"
 
-
-    # Eventually I'll comment these up too:
+    # Increment statements:
     def inc_dec_stmt(self, name, op):
         if op == "++": return f"{name} = {name} + 1"
         elif op == "--": return f"{name} = {name} - 1"
         else: print("Syntactical (no pun intended) Error: bad incrementer (if all goes well, you should never see this error)")
+
+    # Variable assignment:
     def assignment(self, t, o, v): return f"{t} {o} {v}"
+
+    # Accessing index of list with [square brackets]
     def index_access(self, t, i): return f"{t}[{i}]"
+
+    # Hierarchical dotted name:
     def dotted_name(self, *p): return ".".join(map(str, p))
+
+    # Any list of arguments:
     def arg_list(self, *i): return ", ".join(map(str, i))
+
+    # A specific keyword argument:
     def kw_argument(self, name, value): return f"{name}={value}"
+
+    # Any list of identifiers:
     def id_list(self, *i): return ", ".join(map(str, i))
+
+    # A list with [square brackets]:
     def list(self, i=""): return f"[{i or ''}]"
+
+    # A set with {curly brackets}:
     def set(self, items): return f"{{{items}}}"
+
+    # A dictionary with {curly brackets}:
     def dict(self, i=""): return f"{{{i or ''}}}"
+
+    # The pairs inside a dictionary:
     def dict_pairs(self, *p): return ", ".join(map(str, p))
+
+    # Any key values:
     def key_value(self, k, v): return f"{k}: {v}"
+
+    # True:
     def true(self): return "True"
+
+    # False:
     def false(self): return "False"
+
+    # Some logic keywords:
     def logic_not(self, v): return f"not {v}"
     def logic_or(self, *args): return " or ".join(map(str, args))
     def logic_and(self, *args): return " and ".join(map(str, args))
+
+    # Specifying a target:
     def target(self, name, *indices):
         res = str(name)
         for idx in indices: res += f"[{idx}]"
         return res
+    
+    # A comparison:
     def comparison(self, *a): return " ".join(map(str, a))
+
+    # The global statement:
     def global_stmt(self, i): return f"global {i}"
+
+    # Getting a sum:
     def sum(self, *a): return " ".join(map(str, a))
+
+    # Getting a product:
     def product(self, *a): return " ".join(map(str, a))
+
+    # Any identifier (like a name with a bunch of letters):
     def IDENTIFIER(self, t): return str(t)
+
+    # Any number:
     def NUMBER(self, t): return str(t)
+
+    # A compare operator:
     def COMP_OP(self, t): return str(t)
+
+    # A sum operator:
     def SUM_OP(self, t): return str(t)
+
+    # A multiplication operator:
     def MUL_OP(self, t): return str(t)
+
+    # Any inplace operation:
     def INPLACE_OP(self, t): return str(t)
+
+    # The increment or decrement operators:
     def INC_DEC_OP(self, t): return str(t)
+
+    # The equal sign:
     def EQUAL(self, t): return str(t)
+
+    # A semicolon:
     def SEMICOLON(self, t): return ";"
 
 # This is the main function with the CLI arguments and stuff:
