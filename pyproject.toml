@@ -31,7 +31,7 @@ dependencies = [
     "urllib3==2.6.3",
 ]
 readme = "README.md"
-description = "The Syntactical programming language's interpreter."
+description = "The Syntactical programming language's compiler and runner."
 
 [project.scripts]
 syntactical = "syntactical.syntactical:main"
