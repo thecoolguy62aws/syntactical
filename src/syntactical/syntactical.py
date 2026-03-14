@@ -126,6 +126,7 @@ class ToPython(Transformer):
     def module_path(self, *parts):
         return "".join(str(p) for p in parts).replace("/", ".")
 
+    # This is the import statement:
     def import_stmt(self, name, alias=None):
         module = str(name)
         alias_name = alias if alias else module.split(".")[-1]
