@@ -4,7 +4,7 @@ This changelog will include all significant changes to the Syntactical programmi
 
 ## [Unreleased]
 
-- Lots of improvements to code comments.
+- Lots of improvements to code comments and stucture.
 - Some new/improved documentation.
 
 ## 3.3.3
