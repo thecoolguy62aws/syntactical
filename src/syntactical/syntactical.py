@@ -15,7 +15,7 @@ grammar = r"""
     ?statement: import_stmt | with_stmt | class_def | func_def | return_stmt 
             | assignment | if_stmt | while_stmt | for_stmt | try_stmt 
             | break_stmt | continue_stmt | pass_stmt | inc_dec_stmt
-            | expression | from_stmt | global_stmt
+            | expression | from_stmt | global_stmt | match_stmt
     break_stmt: "break"
     continue_stmt: "continue"
     pass_stmt: "pass"
@@ -30,6 +30,10 @@ grammar = r"""
     return_stmt: "return" expression
     try_stmt: "try" block "catch" IDENTIFIER block
     if_stmt: "if" expression block ("else" "if" expression block)* ["else" block]
+    match_stmt: "match" expression "{" case_clause+ [default_clause] "}"
+    case_clause: "case" case_values block
+    case_values: expression ("," expression)*
+    default_clause: "default" block
     while_stmt: "while" expression block
     ?for_stmt: "for" IDENTIFIER "in" expression "to" expression block -> range_for
             | "for" IDENTIFIER "in" expression block               -> iterable_for
@@ -228,6 +232,21 @@ else:
 
         return result
     
+    # This is all for the match statement:
+    def match_stmt(self, expr, *cases):
+        result = f"match {expr}:"
+        for c in cases:
+            result += f"\n{c}"
+        return result
+    def case_clause(self, values, block):
+        indented = "\n".join("    " + line for line in str(block).split("\n"))
+        return f"    case {values}:\n{indented}"
+    def case_values(self, *values):
+        return " | ".join(map(str, values))
+    def default_clause(self, block):
+        indented = "\n".join("    " + line for line in str(block).split("\n"))
+        return f"    case _:\n{indented}"
+
     # Here's the while statement:
     def while_stmt(self, c, b): return f"while {c}:\n{b}"
 
