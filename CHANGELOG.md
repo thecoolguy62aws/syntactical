@@ -6,6 +6,7 @@ This changelog will include all significant changes to the Syntactical programmi
 
 - Lots of improvements to code comments and stucture.
 - Some new/improved documentation.
+- Add `match` statement.
 
 ## 3.3.3
 
