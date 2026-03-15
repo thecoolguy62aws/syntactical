@@ -1,9 +1,13 @@
+#region imports
+
 import sys
 import argparse
 from lark import Lark, Transformer, v_args
 import os
 from syntactical import version # This imports the __version__ variable from version.py
+#endregion
 
+#region grammar
 # This is the main grammar of the language; it has all of the statements and things:
 grammar = r"""
     start: line_content+
@@ -69,6 +73,9 @@ grammar = r"""
     %ignore WS
     %ignore COMMENT
 """
+#endregion
+
+#region main class
 # This is the class for the main transformer; it is like the core of this whole language:
 @v_args(inline=True)
 class ToPython(Transformer):
@@ -324,7 +331,9 @@ else:
 
     # A semicolon:
     def SEMICOLON(self, t): return ";"
+#endregion
 
+#region main function
 # This is the main function with the CLI arguments and stuff:
 def main():
     # Just the arg_parser object:
@@ -374,8 +383,11 @@ def main():
     # If an exception gets called print an error:
     except Exception as e:
         print(f"Syntactical (no pun intended) Error: {e}")
+#endregion
 
+#region name-main idiom
 # Execute the whole program! When installed with Pip, the main() function is just run when you type "syntactical" in your terminal (it never gets to this)
 # Please note: Syntactical only functions properly when installed with Pip, and some features won't work while running it from this file (specifically imports)
 if __name__ == "__main__":
     main()
+#endregion
