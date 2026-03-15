@@ -2,7 +2,7 @@
 
 This changelog will include all significant changes to the Syntactical programming language.
 
-## [Unreleased]
+## 3.4.0
 
 - Lots of improvements to code comments and stucture.
 - Some new/improved documentation.
