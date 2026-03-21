@@ -84,10 +84,26 @@ grammar = r"""
 @v_args(inline=True)
 class ToPython(Transformer):
 
-    # The start; this is like where the transformer well, starts, just what it does first:
-    def start(self, *lines): 
-        # Inject imports automatically:
-        return "import os\nimport json\nimport time\n" + "\n".join(map(str, lines))
+    def __init__(self):
+        self.used_imports = set()
+
+    def _auto_imports(self):
+        parts = []
+        if "os" in self.used_imports:
+            parts.append("import os")
+        if "json" in self.used_imports:
+            parts.append("import json")
+        if "time" in self.used_imports:
+            parts.append("import time")
+        return "\n".join(parts)
+
+    # The start; this is like where the transformer well — starts — just what it does first:
+    def start(self, *lines):
+        auto_imports = self._auto_imports()
+        body = "\n".join(map(str, lines))
+        if auto_imports:
+            return auto_imports + "\n" + body
+        return body
 
     # Litterly just the content on a line:
     def line_content(self, *statements):
@@ -108,28 +124,30 @@ class ToPython(Transformer):
         py_name = str(name)
         call_args = str(args) if args is not None else ""
 
-        # Print functions:
         if py_name == "print": return f"print({call_args}, end='')"
         if py_name == "println": return f"print({call_args})"
-
-        # Input functions:
         if py_name == "input": return f"input({call_args})"
 
-        # System functions:
-        if py_name == "system": return f"os.system({call_args})"
+        if py_name == "system":
+            self.used_imports.add("os")
+            return f"os.system({call_args})"
 
-        # All json functions:
-        if py_name == "json_dumps": return f"json.dumps({call_args})"
-        if py_name == "json_dump": return f"json.dump({call_args})"
-        if py_name == "json_loads": return f"json.loads({call_args})"
-        if py_name == "json_load": return f"json.load({call_args})"
-        
-        # Exit and stop functions:
-        exit_aliases = ["exit", "stop"] # aliases for exit()
-        if py_name in exit_aliases: return f"exit({call_args})"
+        if py_name in ("json_dumps", "json_dump", "json_loads", "json_load"):
+            self.used_imports.add("json")
+            mapping = {
+                "json_dumps": "json.dumps",
+                "json_dump": "json.dump",
+                "json_loads": "json.loads",
+                "json_load": "json.load",
+            }
+            return f"{mapping[py_name]}({call_args})"
 
-        # Time sleep function:
-        if py_name == "sleep": return f"time.sleep({call_args})"
+        if py_name == "exit" or py_name == "stop":
+            return f"exit({call_args})"
+
+        if py_name == "sleep":
+            self.used_imports.add("time")
+            return f"time.sleep({call_args})"
 
         return f"{py_name}({call_args})"
 
