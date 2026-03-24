@@ -2,6 +2,10 @@
 
 This changelog will include all significant changes to the Syntactical programming language.
 
+## [Unreleased]
+
+- **REMOVED**: The `--python` switch will stop working on this release. You should start using `--output` (or `-o`) instead.
+
 ## 3.4.0
 
 - Lots of improvements to code comments and stucture.

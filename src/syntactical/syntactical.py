@@ -364,8 +364,8 @@ def main():
     # The path to the Syntactical program/script:
     arg_parser.add_argument("filename", help="Path to your script")
 
-    # This is --python; if used code gets saved as a Python file instead of running:
-    arg_parser.add_argument("-p", "--python", action="store_true", help="Instead of running the code, save it as python in the same directory.")
+    # --output; new alternative to old --python:
+    arg_parser.add_argument("-o", "--output", type=str, help="Instead of running the code, save it's compiled Python to the specified file.")
 
     args, unknown = arg_parser.parse_known_args()
 
@@ -386,17 +386,17 @@ def main():
         python_code = ToPython().transform(l_parser.parse(source))
 
         # If the --python switch was not specified, run the code:
-        if not args.python:
+        if not args.output:
             exec(python_code, {"__name__": "__main__"})
 
-        # If the --python switch was used, save the code as a file:
+        # If the --output switch was used, save the code as a file (--python was removed):
         else:
-            python_file_name = f"{args.filename}.py"
-            if os.path.isfile(python_file_name):
+
+            if os.path.isfile(args.output):
                 print("File already exists.")
                 exit(1)
             else:
-                with open(python_file_name, 'w') as f:
+                with open(args.output, 'w') as f:
                     f.write(python_code)
 
     # If an exception gets called print an error:
