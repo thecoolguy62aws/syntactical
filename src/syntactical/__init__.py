@@ -7,8 +7,6 @@ def compile(source):
     python_code = syntactical.ToPython().transform(l_parser.parse(source))
     return python_code
 
-toPython = compile # This will be removed soon.
-
 # This is for importing for use in running Syntactical with your own Python (or Syntactical!) program
 def run(source):
     l_parser = Lark(syntactical.grammar, parser='lalr')
