@@ -5,6 +5,7 @@ This changelog will include all significant changes to the Syntactical programmi
 ## [Unreleased]
 
 - **REMOVED**: The `--python` switch will stop working on this release. You should start using `--output` (or `-o`) instead.
+- Add the new `--output` (`-o`) option to specify a file to save the compiled Python code to instead of running it (replacement for removed `--python` switch).
 
 ## 3.4.0
 
