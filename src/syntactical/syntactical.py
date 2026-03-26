@@ -188,12 +188,12 @@ for _p in [""] + sys.path:
         break
 
 if _syn_file:
-    from syntactical import toPython
+    from syntactical import compile
 
     with open(_syn_file, "r") as f:
         _syn_code = f.read()
 
-    _py_code = toPython(_syn_code)
+    _py_code = compile(_syn_code)
 
     _module_globals = {{}}
     exec(_py_code, _module_globals)

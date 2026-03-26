@@ -2,6 +2,10 @@
 
 This changelog will include all significant changes to the Syntactical programming language.
 
+## [Unreleased]
+
+- **HOTFIX** Fix the bug that stopped you from importing other Syntactical files into your script.
+
 ## 4.0.0
 
 - **REMOVED**: The `--python` switch will stop working on this release. You should start using `--output` (or `-o`) instead.
