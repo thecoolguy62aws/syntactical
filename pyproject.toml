@@ -1,6 +1,6 @@
 [project]
 name = "syntactical"
-version = "3.4.0"
+version = "4.0.0"
 dependencies = [
     "build==1.4.0",
     "certifi==2026.2.25",
