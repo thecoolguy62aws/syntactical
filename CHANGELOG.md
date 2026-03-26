@@ -8,6 +8,7 @@ This changelog will include all significant changes to the Syntactical programmi
 - Add the new `--output` (`-o`) option to specify a file to save the compiled Python code to instead of running it (replacement for removed `--python` switch).
 - **REMOVED**: Removed the old `toPython()` function. It can no longer be used. The new `compile()` works just like `toPython()` used to.
 - Make it so that outputted code only has needed imports.
+- Change what the CLI calls itself (switch from 'Syntactical Language Runner' to 'Syntactical \<version\>').
 
 ## 3.4.0
 

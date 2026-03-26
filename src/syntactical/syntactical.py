@@ -374,7 +374,7 @@ else:
 # This is the main function with the CLI arguments and stuff:
 def main():
     # Just the arg_parser object:
-    arg_parser = argparse.ArgumentParser(description="Syntactical Language Runner")
+    arg_parser = argparse.ArgumentParser(description=f"Syntactical {version.__version__}")
 
     # --version prints the current version of Syntactical in your terminal:
     arg_parser.add_argument('--version', action='version', version=f'Syntactical {version.__version__}')
