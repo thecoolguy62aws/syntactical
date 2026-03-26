@@ -2,7 +2,7 @@
 
 This changelog will include all significant changes to the Syntactical programming language.
 
-## [Unreleased]
+## 4.0.1
 
 - **HOTFIX** Fix the bug that stopped you from importing other Syntactical files into your script.
 
