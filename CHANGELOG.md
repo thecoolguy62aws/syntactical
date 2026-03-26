@@ -4,7 +4,7 @@ This changelog will include all significant changes to the Syntactical programmi
 
 ## 4.0.1
 
-- **HOTFIX** Fix the bug that stopped you from importing other Syntactical files into your script.
+- **HOTFIX**: Fix the bug that stopped you from importing other Syntactical files into your script.
 
 ## 4.0.0
 
