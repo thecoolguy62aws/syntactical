@@ -4,7 +4,7 @@ This changelog will include all significant changes to the Syntactical programmi
 
 ## [Unreleased]
 
-- Rename main file from 'syntactical.py' to '\_\_main\_\_.py' so it can be run with `python3 -m syntactical` (or `python -m syntactical`).
+- Add \_\_main\_\_.py so it can be run with `python3 -m syntactical` (or `python -m syntactical`).
 
 ## 4.0.1
 

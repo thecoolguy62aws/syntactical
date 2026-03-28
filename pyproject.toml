@@ -34,8 +34,8 @@ readme = "README.md"
 description = "The Syntactical programming language's compiler and runner."
 
 [project.scripts]
-syntactical = "syntactical.__main__:main"
-syn = "syntactical.__main__:main"
+syntactical = "syntactical.syntactical:main"
+syn = "syntactical.syntactical:main"
 
 [build-system]
 requires = ["setuptools>=61.0"]
