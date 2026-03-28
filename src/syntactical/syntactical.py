@@ -426,5 +426,5 @@ def main():
 # Execute the whole program! When installed with Pip, the main() function is just run when you type "syntactical" in your terminal (it never gets to this)
 # Please note: Syntactical only functions properly when installed with Pip, and some features won't work while running it from this file (specifically imports)
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
 #endregion
