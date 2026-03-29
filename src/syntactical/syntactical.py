@@ -47,7 +47,7 @@ grammar = r"""
     ?comparison: sum (COMP_OP sum)*
     ?sum: product (SUM_OP product)*
     ?product: atom (MUL_OP atom)*
-    ?atom: lambda_expr | primary | NUMBER | STRING | bool | list | set | dict | "(" expression ")"
+    ?atom: lambda_expr | primary | NUMBER | STRING | bool | list | tuple | set | dict | "(" expression ")"
     lambda_expr: "func" "(" [id_list] ")" "=>" "{" expression "}"
     ?primary: dotted_name | primary "(" [arg_list] ")" -> function_call | primary "[" expression "]" -> index_access
     dotted_name: IDENTIFIER ("." IDENTIFIER)*
@@ -56,6 +56,7 @@ grammar = r"""
             | expression
     id_list: IDENTIFIER ("," IDENTIFIER)*
     list: "[" [arg_list] "]"
+    tuple: "(" [arg_list] ")"
     set: "{" arg_list "}"
     dict: "{" [dict_pairs] "}"
     dict_pairs: key_value ("," key_value)*
@@ -300,6 +301,9 @@ else:
 
     # A list with [square brackets]:
     def list(self, i=""): return f"[{i or ''}]"
+
+    # A tuple with (parentheses):
+    def tuple(self, i=""): return f"({i or ''})"
 
     # A set with {curly brackets}:
     def set(self, items): return f"{{{items}}}"

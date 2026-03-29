@@ -5,6 +5,7 @@ This changelog will include all significant changes to the Syntactical programmi
 ## [Unreleased]
 
 - Add \_\_main\_\_.py so it can be run with `python3 -m syntactical` (or `python -m syntactical`).
+- Add tuples.
 
 ## 4.0.1
 
