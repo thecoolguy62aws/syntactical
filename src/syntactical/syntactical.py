@@ -370,7 +370,8 @@ else:
     # The equal sign:
     def EQUAL(self, t): return str(t)
 
-    # A semicolon:
+    # A semicolon, this one actually just puts a semicolon because of the little known Python feature that
+    # lets you put semicolons in your code to have multiple statements on one line (it's optional):
     def SEMICOLON(self, t): return ";"
 #endregion
 

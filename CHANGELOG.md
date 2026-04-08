@@ -2,6 +2,10 @@
 
 This changelog will include all significant changes to the Syntactical programming language.
 
+## [Unreleased]
+
+- Improve some code comments.
+
 ## 4.1.0
 
 - Add \_\_main\_\_.py so it can be run with `python3 -m syntactical` (or `python -m syntactical`).
